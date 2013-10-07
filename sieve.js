@@ -1,12 +1,3 @@
-var isPrime = function(num){
-	for(var i = 2; i <= Math.floor(Math.pow(num, .5)) + 1; i++){
-		if(num % i == 0){
-			return false;
-		}
-	}
-	return true;
-}
-
 var sieve = function(limit){
 	primesBoolList = [];
 	primes = [];
