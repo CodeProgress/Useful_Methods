@@ -2,7 +2,7 @@
 
 import Queue
 
-def search(start, successors, is_goal, search = "BFS"):
+def search(start, successors, is_goal, search = "BFS", verbose = False):
     """search:  "DFS" or "BFS"
     returns path if path, False if no path exists
     (modeled after exercise on Udacity)
@@ -20,6 +20,8 @@ def search(start, successors, is_goal, search = "BFS"):
     q.put([start])
     while q:
         current = q.get()
+        
+        if verbose: print current
         
         if is_goal(current[-1]):
             return current
@@ -54,6 +56,6 @@ def successors(state):
                   state - 1: '<-'}
     return successors
 
-print search(4, successors, is_goal)
+print search(4, successors, is_goal, verbose = True)
 
 
