@@ -41,7 +41,8 @@ def search(start, successors, is_goal, search = "BFS", verbose = False):
 # From a state, the only possible successors are i+1 and i-1. Given
 # a starting integer, find the shortest path to -5. 
 # 
-# (add print statement to above
+# (add print statement to above)
+# update: use verbose = True instead of print)
 
 def is_goal(state):
     if state == -5:
