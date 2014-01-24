@@ -5,6 +5,7 @@ import Queue
 def search(start, successors, is_goal, search = "BFS", verbose = False):
     """search:  "DFS" or "BFS"
     returns path if path, False if no path exists
+    if verbose = True, path progress will be printed
     (modeled after exercise on Udacity)
     """
     if is_goal(start):
@@ -41,8 +42,7 @@ def search(start, successors, is_goal, search = "BFS", verbose = False):
 # From a state, the only possible successors are i+1 and i-1. Given
 # a starting integer, find the shortest path to -5. 
 # 
-# (add print statement to above)
-# update: use verbose = True instead of print)
+# use verbose = True to see search progress
 
 def is_goal(state):
     if state == -5:
