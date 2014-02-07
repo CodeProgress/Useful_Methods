@@ -37,6 +37,19 @@ class LL(object):
         output += str(node.data)
         return output
     
+    def reverse(self):
+        if self.is_empty() or self.head.next == None:
+            return
+        node = self.head
+        self.head = self.head.next
+        node.next = None
+        
+        while self.head.next:
+            temp      = self.head
+            self.head = self.head.next
+            temp.next = node
+            node      = temp
+        self.head.next = node
        
 x = LL()
 
@@ -45,5 +58,9 @@ assert x.is_empty()
 for i in range(10):
     x.add_node(i)
     
+print x
+
+x.reverse()
+
 print x
 
