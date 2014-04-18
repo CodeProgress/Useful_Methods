@@ -10,13 +10,21 @@ def continued_fraction(repList, depth = 20):
               
     depth: int < 1000 (or new recursion depth limit)
     """
-
-    if type(repList) != list:
-        repList = [repList.next() for i in xrange(depth)]
-
-    firstTerm      = repList[0]
-    repeatedTerms  = repList[1:]
-    gen            = itertools.cycle(repeatedTerms)
+    if depth <= 0: return 0
+    
+    if type(repList) == list:
+        if len(repList) == 1: return 0
+        if len(repList) == 1: return repList[0]
+        firstTerm      = repList[0]
+        repeatedTerms  = repList[1:]
+        gen            = itertools.cycle(repeatedTerms)
+        
+    else:
+        try:
+            gen       = repList
+            firstTerm = gen.next()
+        except:
+            raise ValueError("repList must be a list or generator")
 
     return  firstTerm + c_f_helper(gen, depth - 1)
 
