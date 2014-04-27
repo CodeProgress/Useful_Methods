@@ -53,3 +53,32 @@ for i in [test1, test2, test3, test4, test5]:
     assert radix_sort(i) == sorted(i)
 
 
+####### Alternative approach (uses strings)#######
+
+def radix_sort_2(aList):
+    """sorts aList in place and returns it.
+    aList:  list of positive ints
+    """
+    if len(aList) < 2: return aList
+
+    aList = [map(int, str(x)) for x in aList]
+    print aList
+    highest = len(max(aList, key=len))
+    nums = [[] for x in range(10)]
+    size = 1
+    place = -1
+    while size <= highest:
+        for i in aList:
+            if len(i) >= size:
+                nums[i[place]].append(i)
+            else:
+                nums[0].append(i)
+
+        aList = reduce(lambda x, y: x+y, nums)
+        nums = [[] for x in range(10)]
+        
+        size  += 1
+        place -= 1
+
+    return [int(''.join(map(str, x))) for x in aList]
+
